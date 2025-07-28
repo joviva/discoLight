@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>disco Light</title>
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="style.css" />
+    <meta name="theme-color" content="#111" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="apple-touch-icon" href="icon-192.png" />
+  </head>
+  <body>
+    <div class="disco-ball" id="discoBall"></div>
+    <button id="toggleLightBtn"></button>
+    <img
+      src="favicon.ico"
+      alt="favicon"
+      class="corner-favicon"
+      id="cornerFavicon" />
+    <script src="main.js"></script>
+    <script>
+      const favicon = document.getElementById("cornerFavicon");
+      favicon.addEventListener("click", () => {
+        favicon.classList.add("grow-favicon");
+        setTimeout(() => {
+          favicon.classList.remove("grow-favicon");
+        }, 2000);
+      });
+    </script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function () {
+          navigator.serviceWorker.register("sw.js");
+        });
+      }
+    </script>
+  </body>
+</html>
